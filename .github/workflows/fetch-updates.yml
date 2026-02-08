@@ -22,7 +22,7 @@ jobs:
       - name: Make hidden directories normal
         run: find . -mindepth 1 -maxdepth 1 -name ".*" -type d ! -name ".git" -exec sh -c 'mv "$1" "${1##*.}"' _ {} \; && ls -a
       - name: Make necessary files hidden in home
-        run: mv ./src/data.json . && mv data.json .data.json && mv package.json .package.json && mv vite.config.js .vite.config.js && mv index.html .index.html
+        run: mv ./src/data.json . && mv data.json .data.json && mv package.json .package.json && mv vite.config.js .vite.config.js
       - name: Remove all files
         run: rm -rf *
       - name: Fork original repo
@@ -32,7 +32,7 @@ jobs:
       - name: Move files and folders outside of the folder
         run: cd 1 && ls -a && find . -maxdepth 1 -mindepth 1 -exec mv {} .. \; && ls -a && find . -maxdepth 1 -mindepth 1 -name ".*" -exec mv {} .. \; && ls -a
       - name: Make necessary files not hidden and remove cloned repo
-        run: rmdir 1 && mv .data.json data.json && mv data.json src/data.json && mv .package.json package.json && mv .vite.config.js vite.config.js && mv .index.html index.html
+        run: rmdir 1 && mv .data.json data.json && mv data.json src/data.json && mv .package.json package.json && mv .vite.config.js vite.config.js
       - name: set username and email for gh pages
         run: git config user.name "github-actions[bot]" && git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Install npm packages
